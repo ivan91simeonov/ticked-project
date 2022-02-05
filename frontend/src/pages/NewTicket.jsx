@@ -54,9 +54,7 @@ function NewTicket() {
             ></textarea>
           </div>
           <div className="form-group">
-              <button className="btn btn-block">
-                  Submit
-              </button>
+            <button className="btn btn-block">Submit</button>
           </div>
         </form>
       </section>
