@@ -3,7 +3,11 @@ import { useEffect, useState } from 'react';
 import Modal from 'react-modal';
 import { FaPlus } from 'react-icons/fa';
 import { getTicket, closeTicket } from '../features/tickets/ticketSlice';
-import { getNotes, reset as notesReset } from '../features/notes/noteSlice';
+import {
+  getNotes,
+  createNote,
+  reset as notesReset
+} from '../features/notes/noteSlice';
 import { useParams, useNavigate } from 'react-router-dom';
 import BackButton from '../components/BackButton';
 import NoteItem from '../components/NoteItem';
@@ -58,10 +62,10 @@ function Ticket() {
   };
 
   const onNoteSubmit = (e) => {
-      e.preventDefault() 
-      console.log('Submit')
-      closeModal()
-  }
+    e.preventDefault();
+    dispatch(createNote({noteText , ticketId}))
+    closeModal();
+  };
 
   const openModal = () => setModalIsOpen(true);
   const closeModal = () => setModalIsOpen(false);
@@ -124,7 +128,9 @@ function Ticket() {
             ></textarea>
           </div>
           <div className="form-group">
-              <button className="btn" type='submit'>Submit</button>
+            <button className="btn" type="submit">
+              Submit
+            </button>
           </div>
         </form>
       </Modal>
